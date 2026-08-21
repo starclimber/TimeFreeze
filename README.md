@@ -11,8 +11,8 @@ TimeFreeze
 
 兼容性
 
-- PaperTimeFreeze：Paper / Purpur / Spigot
-- FoliaTimeFreeze：Folia
+- PaperTimeFreeze：Paper / Purpur / Spigot 1.20.x，1.21.x，26.1.x
+- FoliaTimeFreeze：Folia 1.20.x，1.21.x，26.1.x
 
 安装
 
@@ -32,8 +32,8 @@ Features
 
 Compatibility
 
-- PaperTimeFreeze：Paper / Purpur / Spigot
-- FoliaTimeFreeze：Folia
+- PaperTimeFreeze：Paper / Purpur / Spigot 1.20.x，1.21.x，26.1.x
+- FoliaTimeFreeze：Folia 1.20.x，1.21.x，26.1.x
 
 Installation
 
