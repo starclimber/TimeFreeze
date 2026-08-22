@@ -1,0 +1,15 @@
+# FoliaTimeFreeze 配置文件
+# 无人时暂停昼夜循环与天气变化，有玩家在线时自动恢复
+
+# 无人时是否暂停昼夜循环（doDaylightCycle）
+pause-daylight: true
+
+# 无人时是否暂停天气变化（doWeatherCycle）
+pause-weather: true
+
+# 插件卸载 / 重载时是否恢复默认（昼夜、天气恢复运转）
+# 设为 false 则卸载后保持当前状态
+restore-on-disable: true
+
+# 是否在控制台输出状态变化日志
+log: true
