@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.foliatimefreeze</groupId>
+    <artifactId>FoliaTimeFreeze</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>FoliaTimeFreeze</name>
+    <description>无人时暂停昼夜循环与天气变化，有人时自动恢复（Folia 专用）</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 使用 Java 17 字节码：Folia 1.20.x(Java17) / 1.21.x(Java21) / 26.x(Java25) 均可运行 -->
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- 以最低版本 Folia 1.20.1 编译，保证向上兼容 1.21.x 与 26.x -->
+        <dependency>
+            <groupId>dev.folia</groupId>
+            <artifactId>folia-api</artifactId>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>FoliaTimeFreeze-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
