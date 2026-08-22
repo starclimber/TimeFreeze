@@ -1,0 +1,19 @@
+name: FoliaTimeFreeze
+version: 1.0.0
+main: com.foliatimefreeze.FoliaTimeFreeze
+api-version: '1.20'
+folia-supported: true
+description: 无人时暂停昼夜循环与天气变化，有人时自动恢复
+author: ima.copilot
+
+commands:
+  foliatimefreeze:
+    description: FoliaTimeFreeze 主命令
+    usage: /foliatimefreeze <reload|status>
+    aliases: [ftf]
+    permission: foliatimefreeze.admin
+
+permissions:
+  foliatimefreeze.admin:
+    description: 允许使用 FoliaTimeFreeze 管理命令
+    default: op
