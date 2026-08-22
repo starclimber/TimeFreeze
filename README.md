@@ -10,28 +10,17 @@
 ![Folia](https://img.shields.io/badge/Folia-supported-brightgreen)
 ![Java](https://img.shields.io/badge/Java-17%2B-orange)
 
-一个轻量级的 Minecraft 服务器插件，解决"空服时时间白白流逝"的痛点。当服务器无人在线时自动冻结昼夜循环与天气变化，有玩家进入后立即恢复正常运转。
+一个轻量级的 Minecraft 服务器插件，解决"空服时时间白白流逝"的痛点：服务器无人在线时自动冻结昼夜循环与天气变化，有玩家进入后立即恢复正常运转。
 
 A lightweight Minecraft server plugin that freezes the day/night cycle and weather while nobody is online, and resumes them as soon as a player joins.
 
 ## 功能特性 / Features
 
 ### ⏸️ 无人时自动冻结 / Freeze When Empty
-最后一个玩家离开服务器后，立即将 `doDaylightCycle` 与 `doWeatherCycle` 设为 `false`，时间与天气停止推进——世界就像被按下了暂停键。
+最后一个玩家离开服务器后，插件立即暂停昼夜循环与天气变化——时间不再流逝、天气不再变化，世界就像被按下了暂停键。
 
 ### ▶️ 有人时自动恢复 / Resume When Players Join
-第一个玩家进入服务器后，立即将两个 GameRule 恢复为 `true`，昼夜与天气恢复正常运转，玩家从离开时的状态无缝继续。
-
-### 🧵 多线程安全 / Thread-Safe
-针对 Folia 的多线程区域化架构做了专门适配：使用 `AtomicInteger` 计数 + `GlobalRegionScheduler` 操作全局状态，完全符合 Folia 的线程模型规范，不会出现数据竞争。
-
-### 🔌 全服务端兼容 / Cross-Server Support
-提供两个版本，覆盖主流服务端：
-- **PaperTimeFreeze**：Paper / Purpur / Spigot 及所有 Bukkit 系服务端
-- **FoliaTimeFreeze**：Folia 多线程服务端
-
-### 📦 轻量零依赖 / Lightweight
-无任何第三方依赖，单个 jar 即装即用，无需 PlaceholderAPI 等前置插件，配置极简。
+第一个玩家进入服务器后，昼夜与天气立即恢复正常运转，世界从离开时的状态无缝继续，玩家感受不到任何停顿。
 
 ## 兼容性 / Compatibility
 
@@ -40,7 +29,7 @@ A lightweight Minecraft server plugin that freezes the day/night cycle and weath
 | PaperTimeFreeze | Paper / Purpur / Spigot / Bukkit 系 | 1.20.x · 1.21.x · 26.1.x · 26.2.x |
 | FoliaTimeFreeze | Folia | 1.20.x · 1.21.x · 26.1.x · 26.2.x |
 
-> 两个 jar 均以最低版本 API 编译、字节码为 Java 17，因此可向下兼容 Java 17/21/25 运行环境。
+> 两个 jar 均以最低版本 API 编译、字节码为 Java 17，可运行于 Java 17/21/25 环境。
 
 ## 安装 / Installation
 
@@ -130,8 +119,8 @@ mvn clean package
 ## 技术特点 / Technical Notes
 
 - **无副作用实现**：通过切换 `doDaylightCycle` / `doWeatherCycle` 两个 GameRule 实现"冻结/恢复"，不修改服务器时间数据，安全可靠。
-- **Folia 线程模型适配**：Folia 版严格遵循区域化多线程规范，所有全局状态操作均经 `GlobalRegionScheduler` 在全局线程执行。
-- **Paper 单线程精简**：Paper 版利用主线程模型，事件驱动、代码简洁、零并发开销。
+- **多线程安全**：Folia 版严格遵循区域化多线程规范，使用 `AtomicInteger` 计数 + `GlobalRegionScheduler` 操作全局状态，避免数据竞争。
+- **轻量零依赖**：无任何第三方依赖，单个 jar 即装即用，无需 PlaceholderAPI 等前置插件。
 - **跨版本稳定**：仅依赖 Bukkit 最核心稳定的 API（玩家事件 + GameRule），从 1.13 至今签名未变，长期无需维护。
 
 ## 常见问题 / FAQ
@@ -140,7 +129,7 @@ mvn clean package
 A: 这是插件的核心功能——最后一名玩家离开后自动冻结昼夜循环，有玩家进入即恢复。
 
 **Q: 天气也会被冻结吗？**
-A: 会。`pause-weather` 开启时，无人期间天气状态不再变化。注意：如果最后一名玩家离开时正在下雨，雨会一直下到有人回来（这是"冻结"而非"停雨"）。如需"无人时连雨一起停"，可自行扩展。
+A: 会。`pause-weather` 开启时，无人期间天气状态不再变化。注意：如果最后一名玩家离开时正在下雨，雨会一直下到有人回来（这是"冻结"而非"停雨"）。
 
 **Q: Paper 和 Folia 版怎么选？**
 A: 看你的服务端类型。普通的 Paper / Purpur / Spigot 服选 Paper 版；Folia 多线程服选 Folia 版。
