@@ -10,7 +10,7 @@
 
 A lightweight Minecraft server plugin that solves the problem of "time passing while nobody is online": it freezes the day/night cycle and weather when the server is empty, and resumes them as soon as a player joins.
 
-> 中文文档：[README.md](README.md)
+> 中文: [README.md](README.md) | 日本語: [README_JA.md](README_JA.md)
 
 ## Features
 
