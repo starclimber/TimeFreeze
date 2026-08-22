@@ -10,7 +10,7 @@
 
 一个轻量级的 Minecraft 服务器插件，解决"空服时时间白白流逝"的痛点：服务器无人在线时自动冻结昼夜循环与天气变化，有玩家进入后立即恢复正常运转。
 
-> English documentation: see [README_EN.md](README_EN.md)
+> English: [README_EN.md](README_EN.md) | 日本語: [README_JA.md](README_JA.md)
 
 ## 功能特性
 
